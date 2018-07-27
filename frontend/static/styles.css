@@ -1,0 +1,43 @@
+html {
+    background-color: #f1f1f1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title,
+label,
+.tiempos-headline {
+    font-family: "Tiempos Headline", sans-serif;
+    font-weight: 900;
+}
+
+body,
+p,
+div,
+span,
+font,
+.label,
+.help,
+.input,
+.select,
+.label,
+button,
+.button,
+option,
+select,
+.textarea {
+    font-family: "Tiempos Text", sans-serif;
+    font-size: 16px;
+}
+.trans-400{
+    transition: 400ms;
+}
+.navbar{
+    top: 0;
+    position: fixed;
+    width: 100%;
+}

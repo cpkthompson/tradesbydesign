@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @font-face {
+            font-family: 'CircularStd-Book';
+            src: url('{% static 'frontend/fonts/circularstd-book.woff2' %}') format('woff2'),
+            url('{% static 'frontend/fonts/circularstd-book.ttf' %}') format('truetype'),
+            url('{% static 'frontend/fonts/circularstd-book.woff' %}') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Tiempos Headline';
+            src: url('{% static 'frontend/fonts/tiempos-headline/TiemposHeadline-Bold.ttf' %}') format('truetype'),
+            url('{% static 'frontend/fonts/tiempos-headline/TiemposHeadline-Bold.woff' %}') format('woff'),
+            url('{% static 'frontend/fonts/tiempos-headline/TiemposHeadline-Bold.woff2' %}') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Tiempos Text';
+            src: url('{% static 'frontend/fonts/tiempos-text/TiemposText-Regular.ttf' %}') format('truetype'),
+            url('{% static 'frontend/fonts/tiempos-text/TiemposText-Regular.woff' %}') format('woff'),
+            url('{% static 'frontend/fonts/tiempos-text/TiemposText-Regular.woff2' %}') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}
+
+    {% endblock %} | Trades By Design</title>
+    <link rel="stylesheet" href="{% static 'frontend/css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'frontend/css/bulma.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% block css %}
+
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+
+{% endblock %}
+{% block script %}
+
+{% endblock %}
+</body>
+</html>

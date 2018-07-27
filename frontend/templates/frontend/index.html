@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}
+    Merch Your Favorite Designer
+{% endblock %}
+{% block content %}
+    <nav class="navbar is-black" style="padding: 10px 0;">
+        <div class="navbar-brand w3-margin-left w3-margin-right">
+            <a class="navbar-item w3-hover-none" href="/">
+                <span class="title w3-text-white">Trades By Design</span>
+            </a>
+
+
+            <button class="button navbar-burger is-black" data-target="navMenu" id="navBurger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start w3-center">
+                <form class="w3-animate-opacity w3-hide-medium w3-hide-small">
+                    <div class="navbar-item" style="margin-left:100px">
+                        <div class="field has-addons">
+                            <div class="control">
+                                <input
+                                        class="input w3-border w3-xlarge trans-400"
+                                        type="text"
+                                        style="min-width: 400px"
+                                        placeholder="Enter search..."
+                                        name="q">
+                            </div>
+                            <div class="control">
+                                <button class="button w3-xlarge"
+                                        type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="navbar-end w3-center w3-margin-right">
+                <a href="" class="navbar-item">Login</a>
+                <a href="" class="navbar-item">Register</a>
+            </div>
+
+        </div>
+    </nav>
+    <section class="hero is-medium is-black">
+        <div class="hero-body container w3-container">
+            <h1 class="title w3-jumbo w3-padding-24">Lorem ipsum dolor sit amet.</h1>
+            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae, delectus ipsam
+                laboriosam natus nobis quidem sapiente tempore tenetur voluptate? Ab architecto consectetur excepturi
+                harum id laboriosam, possimus temporibus voluptatum. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit. Consectetur corporis delectus distinctio fugit ipsum perferendis repudiandae temporibus
+                voluptatem! Accusantium ea ipsa officia porro possimus quam, saepe sapiente sequi ullam vero.</p>
+        </div>
+    </section>
+
+{% endblock %}
