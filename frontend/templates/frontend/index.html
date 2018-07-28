@@ -35,30 +35,30 @@
         <h1 class="title">Recently Added</h1>
         <div class="columns is-multiline is-mobile">
             {% for merch in new_merch %}
-                <section class="card">
-                    <a href="{% url 'merch:product_detail' merch.slug %}" class="column is-3" style="display: inline">
+                <a href="{% url 'merch:product_detail' merch.slug %}" class="column is-3" style="display: inline">
+                    <section class="card">
                         <figure class="image is-square" title="{{ merch.name }} by {{ merch.owner }}" style="margin: 0">
                             {% thumbnail merch.image "200x200" crop="center" as im %}
                                 <img src="{{ im.url }}" width="{{ im.width }}"
                                      height="{{ im.height }}">
                             {% endthumbnail %}
                         </figure>
-                    </a>
-                    <h1 class="subtitle w3-padding" style="margin: auto">{{ merch }}
-                        GHC<strong>{{ merch.price }}</strong></h1>
-                    <a href="{% url 'view_profile' merch.owner %}">{{ merch.owner }}</a>
-                    <br>
-                    <br>
-                    <form action="{% url "cart:cart_add" merch.id %}" method="post">
+                        <h1 class="subtitle w3-padding" style="margin: auto">{{ merch }}
+                            GHC<strong>{{ merch.price }}</strong></h1>
+                        <a href="{% url 'view_profile' merch.owner %}">{{ merch.owner }}</a>
+                        <br>
+                        <br>
+                        <form action="{% url "cart:cart_add" merch.id %}" method="post">
 
-                        {{ cart_product_form }}
-                        {% csrf_token %}
-                        <button class="button is-fullwidth is-link"
-                                style="margin: auto;display: inline; border-radius: 0">
-                            Add to Cart
-                        </button>
-                    </form>
-                </section>
+                            {{ cart_product_form }}
+                            {% csrf_token %}
+                            <button class="button is-fullwidth is-link"
+                                    style="margin: auto;display: inline; border-radius: 0">
+                                Add to Cart
+                            </button>
+                        </form>
+                    </section>
+                </a>
             {% endfor %}
 
         </div>
@@ -69,30 +69,30 @@
         <h1 class="title">Back To School With Style</h1>
         <div class="columns is-multiline is-mobile">
             {% for merch in back_to_school %}
-                <section class="card">
-                    <a href="{% url 'merch:product_detail' merch.slug %}" class="column is-3" style="display: inline">
+                <a href="{% url 'merch:product_detail' merch.slug %}" class="column is-3" style="display: inline">
+                    <section class="card">
                         <figure class="image is-square" title="{{ merch.name }} by {{ merch.owner }}" style="margin: 0">
                             {% thumbnail merch.image "200x200" crop="center" as im %}
                                 <img src="{{ im.url }}" width="{{ im.width }}"
                                      height="{{ im.height }}">
                             {% endthumbnail %}
                         </figure>
-                    </a>
-                    <h1 class="subtitle w3-padding" style="margin: auto">{{ merch }}
-                        GHC<strong>{{ merch.price }}</strong></h1>
-                    <a href="{% url 'view_profile' merch.owner %}">{{ merch.owner }}</a>
-                    <br>
-                    <br>
-                    <form action="{% url "cart:cart_add" merch.id %}" method="post">
+                        <h1 class="subtitle w3-padding" style="margin: auto">{{ merch }}
+                            GHC<strong>{{ merch.price }}</strong></h1>
+                        <a href="{% url 'view_profile' merch.owner %}">{{ merch.owner }}</a>
+                        <br>
+                        <br>
+                        <form action="{% url "cart:cart_add" merch.id %}" method="post">
 
-                        {{ cart_product_form }}
-                        {% csrf_token %}
-                        <button class="button is-fullwidth is-link"
-                                style="margin: auto;display: inline; border-radius: 0">
-                            Add to Cart
-                        </button>
-                    </form>
-                </section>
+                            {{ cart_product_form }}
+                            {% csrf_token %}
+                            <button class="button is-fullwidth is-link"
+                                    style="margin: auto;display: inline; border-radius: 0">
+                                Add to Cart
+                            </button>
+                        </form>
+                    </section>
+                </a>
             {% endfor %}
 
         </div>
