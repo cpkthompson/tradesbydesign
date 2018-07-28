@@ -29,12 +29,7 @@
                 <div class="grid-view-item__meta">
                     <span class="product-price__price w3-xxlarge">GHC {{ merch.price }}</span>
                 </div>
-                <form action="{% url "cart:cart_add" merch.id %}" method="post">
-
-                    {{ cart_product_form }}
-                    {% csrf_token %}
-                    <input type="submit" class="button" value="Add to cart">
-                </form>
+                <a href="{% url "cart:cart_add" merch.id %}" class="button" value="Add to cart"></a>
                 <div class="w3-padding w3-black w3-margin-top w3-card w3-padding-32 ">
                     {{ merch.description|linebreaks }}
                 </div>
