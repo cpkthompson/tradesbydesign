@@ -13,17 +13,24 @@
     <div class="w3-margin-top container w3-container w3-center w3-padding-24">
         <div class="columns is-mobile is-multiline">
             {% for m in merch %}
-                <a href="{% url 'frontend:merch_type' merch_type.slug %}" class="column is-4">
-                    <section class="card">
-                        <h1 class="card-header-title is-centered" style="margin-bottom: 0">{{ merch_type.name }}</h1>
-                        <figure class="image is-16by9" style="margin: 0">
-                            {% thumbnail merch_type.image "640x360" crop="center" as im %}
-                                <img src="{{ im.url }}" width="{{ im.width }}"
-                                     height="{{ im.height }}">
-                            {% endthumbnail %}
-                        </figure>
-                    </section>
-                </a>
+                <div class="column is-3 card">
+                    <a href="{% url 'merch:product_detail' merch.slug %}" class="image is-square is-block"
+                       title="{{ merch.title }} by {{ merch.owner }}" style="margin: 0">
+                        {% thumbnail merch.image "200x200" crop="center" as im %}
+                            <img src="{{ im.url }}" width="{{ im.width }}"
+                                 height="{{ im.height }}">
+                        {% endthumbnail %}
+                    </a>
+                    <h1 class="subtitle w3-padding menu-label w3-large" style="margin: auto">
+                        <strong>GHC {{ merch.price }}</strong></h1>
+                    <a class="button is-text" href="{% url 'view_profile' merch.owner %}">{{ merch.owner }}</a>
+                    <br>
+                    <a href="{% url 'cart:cart_add' merch.id %}"
+                       class="button is-fullwidth is-link is-outlined trans-400"
+                       style="margin: auto; border-radius: 0" title="Add to Cart">
+                        <i class="fas fa-cart-plus"></i>
+                    </a>
+                </div>
             {% endfor %}
 
         </div>
