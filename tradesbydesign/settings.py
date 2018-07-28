@@ -59,8 +59,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.twitter',
     'storages',
     'bulma',
-    'categories',
-    'categories.editor',
+    # 'categories',
+    # 'categories.editor',
 ]
 
 SITE_ID = 1

@@ -5,8 +5,12 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+class ProductCategory(models.Model):
+    title = models.CharField(max_length=200, db_index=True)
+
+
 class Product(models.Model):
-    product_category = models.ForeignKey(Category, related_name='products')
+    product_category = models.ForeignKey(ProductCategory, related_name='products')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='seller', blank=True, null=True)
     title = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
