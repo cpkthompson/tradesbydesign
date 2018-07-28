@@ -1,4 +1,4 @@
-from categories.models import Category
+# from categories.models import Category
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -6,7 +6,7 @@ from django.template.defaultfilters import slugify
 
 
 class Merch(models.Model):
-    type = models.ForeignKey(Category, related_name='merch', null=True, blank=True)
+    # type = models.ForeignKey(Category, related_name='merch', null=True, blank=True)
     name = models.CharField(max_length=200, db_index=True)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='seller', blank=True, null=True)
     slug = models.SlugField(max_length=300, db_index=True, editable=False)
