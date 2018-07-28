@@ -15,6 +15,5 @@ urlpatterns = [
     url(_(r'^accounts/'), include('allauth.urls')),
     url(r'^accounts/profile/$', profile, name='profile'),
     url(_(r'^merch/'), include('merch.urls', namespace='merch')),
-    # url(r'^', include('frontend.urls', namespace='frontend')),
 
 ]
