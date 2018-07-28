@@ -24,7 +24,8 @@
                     Connect with Twitter
                 </a>
 
-                <p class="w3-margin-bottom">{% blocktrans %}If you have not created an account yet, then please
+                <p class="w3-margin-bottom w3-text-black">{% blocktrans %}If you have not created an account yet, then
+                    please
                     <a href="{{ signup_url }}" class="w3-border-bottom">sign up</a> first{% endblocktrans %}</p>
                 <form class="login" method="POST" action="{% url 'account_login' %}">
                     {% csrf_token %}
