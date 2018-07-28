@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'frontend/css/tradesbydesign.css' %}">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     {% block css %}
 
@@ -86,8 +87,10 @@
 
         <div class="navbar-end w3-center w3-margin-right">
             {% if request.user.is_authenticated %}
-                <a href="{% url 'profile' %}" class="navbar-item">{{ request.user }}</a>
-                <a href="{% url 'account_logout' %}" class="navbar-item w3-opacity">Logout</a>
+                <a href="{% url 'cart:cart_detail' %}" class="navbar-item" title="View Cart">Cart&nbsp;<i
+                        class="fas fa-cart-plus"></i></a>
+                <a href="{% url 'profile' %}" class="navbar-item" title="View Profile">{{ request.user }}</a>
+                <a href="{% url 'account_logout' %}" class="navbar-item w3-opacity" title="Logout">Logout</a>
             {% else %}
                 <a href="{% url 'account_login' %}" class="navbar-item">Login</a>
                 <a href="{% url 'account_signup' %}" class="navbar-item">Register</a>

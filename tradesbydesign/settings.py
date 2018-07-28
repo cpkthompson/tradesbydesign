@@ -46,10 +46,10 @@ INSTALLED_APPS = [
     'accounts',
     'frontend',
     'merch',
-    # 'cart',
+    'cart',
     # 'payment',
     # 'collection',
-    # 'orders',
+    'orders',
 
     # Third party libraries
     'allauth',
@@ -59,9 +59,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.twitter',
     'storages',
     'bulma',
+    'sorl.thumbnail',
 ]
 
 SITE_ID = 1
+
+CART_SESSION_ID = 'cart'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

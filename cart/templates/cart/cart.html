@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}
+    Your shopping cart
+{% endblock %}
+
+{% block content %}
+    <div class="page-width w3-padding-64" data-section-id="cart-template" data-section-type="cart-template">
+
+
+        <div class="section-header text-center">
+            <h1>Your cart</h1>
+        </div>
+
+        <div class="cart">
+            <table>
+                <thead class="cart__row cart__header">
+                <tr>
+                    <th colspan="2">Product</th>
+                    <th>Price</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-right">Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in cart %}
+                    {% with product=item.product %}
+
+                        <tr class="cart__row border-bottom line1 cart-flex border-top">
+                            <td class="cart__image-wrapper cart-flex-item">
+                                <a href="{{ product.get_absolute_url }}">
+                                    {% thumbnail product.image "80x80" crop="center" as im %}
+                                        <img class="cart__image" src="{{ im.url }}" width="{{ im.width }}"
+                                             height="{{ im.height }}" alt="{{ product.title }}">
+                                    {% endthumbnail %}
+                                </a>
+                            </td>
+                            <td class="cart__meta small--text-left cart-flex-item">
+                                <div class="list-view-item__title">
+                                    <a href="{{ product.get_absolute_url }}">
+                                        {{ product.title }}
+
+                                    </a>
+                                </div>
+
+
+                                <p class="small--hide">
+                                    <a href="{% url "cart:cart_remove" product.id %}"
+                                       class="btn btn--small btn--secondary cart__remove">Remove</a>
+                                </p>
+                            </td>
+                            <td class="cart__price-wrapper cart-flex-item">
+                                {{ item.price }}
+
+
+                                <div class="cart__edit medium-up--hide">
+                                    <button type="button"
+                                            class="btn btn--secondary btn--small js-edit-toggle cart__edit--active"
+                                            data-target="line1">
+                                        <span class="cart__edit-text--edit">Edit</span>
+                                        <span class="cart__edit-text--cancel">Cancel</span>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="cart__update-wrapper cart-flex-item text-right">
+                                <a href="{% url "cart:cart_remove" product.id %}"
+                                   class="btn btn--small btn--secondary cart__remove medium-up--hide">Remove</a>
+                                <div class="cart__qty">
+                                    <label for=""
+                                           class="cart__qty-label">Quantity</label>
+                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                        {{ item.update_quantity_form.quantity }}
+                                        {{ item.update_quantity_form.update }}
+                                        <input type="submit" value="Update">
+                                        {% csrf_token %}
+                                    </form>
+                                </div>
+                            </td>
+                            <td class="text-right small--hide">
+
+
+                                <div>
+                                    {{ item.total_price }}
+                                </div>
+
+
+                            </td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <footer class="cart__footer">
+                <div class="grid">
+
+                    <div class="grid__item text-right small--text-center">
+                        <div class="w3-margin-bottom">
+                            <span class="cart__subtotal-title">Total</span>
+                            <span class="cart__subtotal">{{ cart.get_total_price }}</span>
+                        </div>
+
+                        <a href="{% url 'frontend:index' %}"
+                           class="btn btn--secondary cart__update cart__continue--large">Continue
+                            shopping</a>
+                        <a href="{% url 'orders:order_create' %}"
+                           class="btn cart__update cart__continue--large">Checkout</a>
+
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+{% endblock %}

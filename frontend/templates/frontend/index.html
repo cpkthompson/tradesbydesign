@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}
-    Your Favorite Designer's Merch
+    Favorite Designer's Merch
 {% endblock %}
 {% block content %}
     <section class="hero is-medium is-black">
         <div class="hero-body container w3-container">
-            <h1 class="title w3-jumbo w3-padding-24">Lorem ipsum dolor sit amet.</h1>
+            <h1 class="title w3-jumbo w3-padding-24">Support Your Favorite Designers.</h1>
             <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae, delectus ipsam
                 laboriosam natus nobis quidem sapiente tempore tenetur voluptate? Ab architecto consectetur excepturi
                 harum id laboriosam, possimus temporibus voluptatum. Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -13,15 +13,55 @@
                 voluptatem! Accusantium ea ipsa officia porro possimus quam, saepe sapiente sequi ullam vero.</p>
         </div>
     </section>
-    <div class="w3-margin-top container w3-container">
+    <div class="w3-margin-top container w3-container w3-center w3-padding-24">
+        <h1 class="title">Our Favorite Categories</h1>
         <div class="columns">
-            {% for category in categories %}
-                <section class="column is-3 w3-grey">
-                    {{ category.name }}
+            {% for merch_type in merch_types %}
+                <a href="{% url 'frontend:merch_type' merch_type.slug %}" class="column is-4">
+                    <section class="card">
+                        <h1 class="card-header-title is-centered" style="margin-bottom: 0">{{ merch_type.name }}</h1>
+                        <figure class="image is-16by9" style="margin: 0">
+                            <img src="https://bulma.io/images/placeholders/640x360.png" alt="Placeholder image">
+                        </figure>
+                    </section>
+                </a>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="w3-margin-top container w3-container w3-center w3-padding-24">
+        <h1 class="title">Recently Added</h1>
+        <div class="columns">
+            {% for merch in new_merch %}
+                <section class="card">
+                    <a href="{% url 'merch:product_detail' merch.slug %}" class="column is-3" style="display: inline">
+                        <figure class="image is-square" style="margin: 0">
+                            <img src="https://bulma.io/images/placeholders/480x480.png" alt="Placeholder image">
+                        </figure>
+                    </a>
+                    <h1 class="subtitle w3-padding" style="margin: auto">{{ merch }}
+                        GHC<strong>{{ merch.price }}</strong></h1>
+                    <a href="{% url 'view_profile' merch.owner %}">{{ merch.owner }}</a>
+                    <br>
+                    <br>
+                    <form action="{% url "cart:cart_add" merch.id %}" method="post">
+
+                        {{ cart_product_form }}
+                        {% csrf_token %}
+                        <button class="button is-fullwidth is-link"
+                                style="margin: auto;display: inline; border-radius: 0">
+                            Add to Cart
+                        </button>
+                    </form>
                 </section>
             {% endfor %}
 
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 {% endblock %}
