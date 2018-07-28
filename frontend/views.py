@@ -9,9 +9,9 @@ def index(request):
     merch_types = MerchType.objects.filter(is_active=True)
     new_merch = Merch.objects.all()
     context = {
-        'merch_types': merch_types,
-        'new_merch': new_merch.order_by('created'),
-        'back_to_school': new_merch.order_by('-created')
+        'merch_types': merch_types[:3],
+        'new_merch': new_merch.order_by('created')[:8],
+        'back_to_school': new_merch.order_by('-created')[:8]
 
     }
     return render(request, 'frontend/index.html', context)
