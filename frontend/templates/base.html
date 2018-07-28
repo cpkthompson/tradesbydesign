@@ -47,9 +47,60 @@
     {% endblock %}
 </head>
 <body>
-{% block content %}
+<nav class="navbar is-black" style="padding: 10px 0;">
+    <div class="navbar-brand w3-margin-left w3-margin-right">
+        <a class="navbar-item w3-hover-none" href="/">
+            <span class="title w3-text-white">Trades By Design</span>
+        </a>
 
-{% endblock %}
+
+        <button class="button navbar-burger is-black" data-target="navMenu" id="navBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start w3-center">
+            {#            <form class="w3-animate-opacity w3-hide-medium w3-hide-small">#}
+            {#                <div class="navbar-item" style="margin-left:100px">#}
+            {#                    <div class="field has-addons">#}
+            {#                        <div class="control">#}
+            {#                            <input#}
+            {#                                    class="input trans-400"#}
+            {#                                    type="text"#}
+            {#                                    style="min-width: 400px"#}
+            {#                                    placeholder="Enter search..."#}
+            {#                                    name="q">#}
+            {#                        </div>#}
+            {#                        <div class="control">#}
+            {#                            <button class="button"#}
+            {#                                    type="submit">#}
+            {#                                <i class="fas fa-search"></i>#}
+            {#                            </button>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </form>#}
+        </div>
+
+        <div class="navbar-end w3-center w3-margin-right">
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="navbar-item">{{ request.user }}</a>
+                <a href="{% url 'account_logout' %}" class="navbar-item w3-opacity">Logout</a>
+            {% else %}
+                <a href="{% url 'account_login' %}" class="navbar-item">Login</a>
+                <a href="{% url 'account_signup' %}" class="navbar-item">Register</a>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+<div class="block-content-offset">
+    {% block content %}
+
+    {% endblock %}
+</div>
 {% block script %}
 
 {% endblock %}

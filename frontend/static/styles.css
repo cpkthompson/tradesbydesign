@@ -41,3 +41,6 @@ select,
     position: fixed;
     width: 100%;
 }
+.block-content-offset{
+    margin-top: 69px;
+}
