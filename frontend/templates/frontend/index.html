@@ -4,16 +4,17 @@
     Favorite Designer's Merch
 {% endblock %}
 {% block content %}
-    <section class="hero is-medium is-danger bgimg">
-        <div class="hero-body container w3-container w3-center">
-            <h1 class="title w3-jumbo w3-black is-inline-block">Art Your Style.</h1>
-            <h1 class="subtitle w3-xxxlarge w3-text-white w3-padding w3-black">Support Your Favorite Easily While Upping
-                Your Merch Game</h1>
+    <section class="hero is-small is-danger bgimg">
+        <div class="hero-body container w3-container w3-center w3-padding-64">
+            <h1 class="title w3-jumbo w3-black is-inline-block">Art Your Merch.</h1>
+            <h1 class="subtitle w3-xxxlarge w3-text-white w3-padding w3-black">Support Your Favorite Designers While
+                Upping
+                Your Style Game</h1>
         </div>
     </section>
     <div class="w3-margin-top container w3-container w3-center w3-padding-24">
         <h1 class="title">Our Favorite Categories</h1>
-        <div class="columns">
+        <div class="columns is-mobile">
             {% for merch_type in merch_types %}
                 <a href="{% url 'frontend:merch_type' merch_type.slug %}" class="column is-4">
                     <section class="card">
@@ -32,7 +33,7 @@
     </div>
     <div class="w3-margin-top container w3-container w3-center w3-padding-24">
         <h1 class="title">Recently Added</h1>
-        <div class="columns">
+        <div class="columns is-multiline is-mobile">
             {% for merch in new_merch %}
                 <section class="card">
                     <a href="{% url 'merch:product_detail' merch.slug %}" class="column is-3" style="display: inline">
