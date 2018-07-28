@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 {% block title %}
     Favorite Designer's Merch
 {% endblock %}
 {% block content %}
-    <section class="hero is-medium is-black">
-        <div class="hero-body container w3-container">
-            <h1 class="title w3-jumbo w3-padding-24">Support Your Favorite Designers.</h1>
-            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi beatae, delectus ipsam
-                laboriosam natus nobis quidem sapiente tempore tenetur voluptate? Ab architecto consectetur excepturi
-                harum id laboriosam, possimus temporibus voluptatum. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Consectetur corporis delectus distinctio fugit ipsum perferendis repudiandae temporibus
-                voluptatem! Accusantium ea ipsa officia porro possimus quam, saepe sapiente sequi ullam vero.</p>
+    <section class="hero is-medium is-danger bgimg">
+        <div class="hero-body container w3-container w3-center">
+            <h1 class="title w3-jumbo w3-black is-inline-block">Art Your Style.</h1>
+            <h1 class="subtitle w3-xxxlarge w3-text-white w3-padding w3-black">Support Your Favorite Easily While Upping
+                Your Merch Game</h1>
         </div>
     </section>
     <div class="w3-margin-top container w3-container w3-center w3-padding-24">
@@ -21,7 +19,10 @@
                     <section class="card">
                         <h1 class="card-header-title is-centered" style="margin-bottom: 0">{{ merch_type.name }}</h1>
                         <figure class="image is-16by9" style="margin: 0">
-                            <img src="https://bulma.io/images/placeholders/640x360.png" alt="Placeholder image">
+                            {% thumbnail merch_type.image "640x360" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}"
+                                     height="{{ im.height }}">
+                            {% endthumbnail %}
                         </figure>
                     </section>
                 </a>
@@ -35,8 +36,11 @@
             {% for merch in new_merch %}
                 <section class="card">
                     <a href="{% url 'merch:product_detail' merch.slug %}" class="column is-3" style="display: inline">
-                        <figure class="image is-square" style="margin: 0">
-                            <img src="https://bulma.io/images/placeholders/480x480.png" alt="Placeholder image">
+                        <figure class="image is-square" title="{{ merch.name }} by {{ merch.owner }}">
+                            {% thumbnail merch_type.image "480x480" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}"
+                                     height="{{ im.height }}">
+                            {% endthumbnail %}
                         </figure>
                     </a>
                     <h1 class="subtitle w3-padding" style="margin: auto">{{ merch }}

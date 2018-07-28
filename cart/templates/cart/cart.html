@@ -26,7 +26,8 @@
                 </thead>
                 <tbody>
                 {% for item in cart %}
-                    {% with product=item.product %}
+                    {{ item }}
+                    {% with product=item %}
 
                         <tr class="cart__row border-bottom line1 cart-flex border-top">
                             <td class="cart__image-wrapper cart-flex-item">

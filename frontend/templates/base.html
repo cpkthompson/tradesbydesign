@@ -43,19 +43,27 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="{% static 'frontend/css/tradesbydesign.css' %}">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+
+        .bgimg {
+            background-image: url('{% static 'frontend/images/pattern.svg' %}');
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
     {% block css %}
 
     {% endblock %}
 </head>
 <body>
-<nav class="navbar is-black" style="padding: 10px 0;">
+<nav class="navbar" style="padding: 10px 0;">
     <div class="navbar-brand w3-margin-left w3-margin-right">
         <a class="navbar-item w3-hover-none" href="/">
-            <span class="title w3-text-white">Trades By Design</span>
+            <span class="title">Trades By Design</span>
         </a>
 
 
-        <button class="button navbar-burger is-black" data-target="navMenu" id="navBurger">
+        <button class="button navbar-burger" data-target="navMenu" id="navBurger">
             <span></span>
             <span></span>
             <span></span>
@@ -99,7 +107,7 @@
 
     </div>
 </nav>
-<div class="block-content-offset">
+<div class="block-content-offset bgimg">
     {% block content %}
 
     {% endblock %}
