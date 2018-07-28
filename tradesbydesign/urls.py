@@ -7,7 +7,6 @@ from accounts.views import profile
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('frontend.urls', namespace='frontend')),
     # url(_(r'^cart/'), include('cart.urls', namespace='cart')),
     # url(_(r'^orders/'), include('orders.urls', namespace='orders')),
     # url(_(r'^payment/'), include('payment.urls', namespace='payment')),
@@ -15,5 +14,6 @@ urlpatterns = [
     url(_(r'^accounts/'), include('allauth.urls')),
     url(r'^accounts/profile/$', profile, name='profile'),
     url(_(r'^merch/'), include('merch.urls', namespace='merch')),
+    url(r'^', include('frontend.urls', namespace='frontend')),
 
 ]
