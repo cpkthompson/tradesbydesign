@@ -45,11 +45,11 @@ INSTALLED_APPS = [
     # My Apps
     'accounts',
     'frontend',
-    'shop',
-    'cart',
-    'payment',
-    'collection',
-    'orders',
+    'merch',
+    # 'cart',
+    # 'payment',
+    # 'collection',
+    # 'orders',
 
     # Third party libraries
     'allauth',
@@ -59,8 +59,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.twitter',
     'storages',
     'bulma',
-    'categories',
-    'categories.editor',
 ]
 
 SITE_ID = 1

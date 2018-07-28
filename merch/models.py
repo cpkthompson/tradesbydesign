@@ -1,18 +1,19 @@
-from categories.models import Category
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.template.defaultfilters import slugify
 
 
-class ProductCategory(models.Model):
-    title = models.CharField(max_length=200, db_index=True)
+# from collection.models import Collection, BookCollection
+
+class MerchType(models.Model):
+    name = models.CharField(max_length=200, db_index=True)
 
 
-class Product(models.Model):
-    product_category = models.ForeignKey(ProductCategory, related_name='products')
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='seller', blank=True, null=True)
+class Merch(models.Model):
+    category = models.ForeignKey(MerchType, related_name='products')
     title = models.CharField(max_length=200, db_index=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='writer', blank=True, null=True)
     slug = models.SlugField(max_length=200, db_index=True)
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     description = models.TextField(blank=True)
@@ -35,4 +36,6 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('shop:product_detail', args=[self.slug])
+        return reverse('merch:product_detail', args=[self.slug])
+
+# Create your models here.
