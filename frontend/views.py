@@ -1,12 +1,12 @@
-from categories.models import Category
+# from categories.models import Category
 from django.shortcuts import render
 
 
 # Create your views here.
 def index(request):
-    categories = Category.objects.filter(active=True)
+    # categories = Category.objects.filter(active=True)
     context = {
-        'categories': categories
+        # 'categories': categories
     }
     return render(request, 'frontend/index.html', context)
 

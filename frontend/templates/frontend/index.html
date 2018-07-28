@@ -13,5 +13,15 @@
                 voluptatem! Accusantium ea ipsa officia porro possimus quam, saepe sapiente sequi ullam vero.</p>
         </div>
     </section>
+    <div class="w3-margin-top container w3-container">
+        <div class="columns">
+            {% for category in categories %}
+                <section class="column is-3 w3-grey">
+                    {{ category.name }}
+                </section>
+            {% endfor %}
+
+        </div>
+    </div>
 
 {% endblock %}
