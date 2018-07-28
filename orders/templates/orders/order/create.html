@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load bulma_tags %}
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% block content %}
+    <div class="container w3-container">
+        <div class="columns is-centered">
+            <div class="column is-half is-narrow">
+                <h1>Your Order</h1>
+
+                <div class="order-info">
+                    <ul>
+                        {% for item in cart %}
+                            <li class="w3-xlarge">{{ item.quantity }} cop{{ item.quantity|pluralize:"y,ies" }}
+                                of {{ item.product.title }}
+                                by {{ item.product.author }} =
+                                <span>{{ item.total_price }}</span></li>
+                        {% endfor %}
+                    </ul>
+                    <br>
+                    <p class="w3-xlarge">Total: <strong>{{ cart.get_total_price }}</strong></p>
+                </div>
+                <br>
+                <form action="." method="post" class="order-form">
+                    {{ form|bulma }}
+                    <p><input type="submit" value="Place order"></p>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

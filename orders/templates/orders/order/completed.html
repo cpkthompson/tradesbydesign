@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+    <div class="w3-container container w3-center">
+        <p class="w3-xxlarge">Order sucessfully completed, {{ request.user.get_full_name }}. You'll be contacted
+            shortly.</p>
+        <div class="w3-center">
+            <a href="{% url "shop:index" %}" class="button light">Continue shopping &rightarrow;</a>
+        </div>
+    </div>
+
+{% endblock %}

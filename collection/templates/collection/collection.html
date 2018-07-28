@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block content %}
+    <div class="buyreadlove-section index-section">
+        <style>
+
+            .grid__item--1492362075715 .grid-view-item__image {
+                max-height: 345px;
+            }
+
+        </style>
+
+        <div class="page-width">
+            <div class="section-header text-center"><h2>{{ title }}</h2></div>
+
+            <div class="grid grid--uniform grid--view-items">
+                {% for book in collection %}
+                    {% include 'partials/book-grid.html' %}
+                {% endfor %}
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

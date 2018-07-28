@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="container w3-container">
+        <div class="w3-center w3-margin-bottom">
+            <div class="h3 grid-view-item__title w3-xxxlarge">{{ product.title }}</div>
+            <p class="grid-view-item__title w3-opacity w3-xlarge">{{ product.author }}</p>
+        </div>
+
+        <div class="columns">
+
+            <div class="column is-half w3-center">
+                {% thumbnail product.image "320x480" crop="center" as im %}
+                    <img src="{{ im.url }}" width="{{ im.width }}"
+                         height="{{ im.height }}">
+                {% endthumbnail %}
+            </div>
+            <div class="column is-half w3-margin">
+
+                <div class="grid-view-item__meta">
+                    <span class="product-price__price w3-xxlarge">{{ product.price }}</span>
+                </div>
+                <form action="{% url "cart:cart_add" product.id %}" method="post">
+
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <input type="submit" value="Add to cart">
+                </form>
+                <span style="font-size: 18px" class="w3-padding">{{ product.description|linebreaks }}</span>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+        
+        
+        

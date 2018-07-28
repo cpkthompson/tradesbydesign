@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+    <!-- Header -->
+    <div class="buyreadlove-section index-section index-section--flush">
+        <div class="hero hero--medium hero__overlay"
+             style="background-image: url('{% static 'shop/img/eugenia_664392c5-ecad-49d1-b875-84ad51b2ef4e_2048x.jpg' %}'); background-position: center top;">
+
+            <div class="hero__inner">
+                <div class="page-width text-center">
+
+                    <h2 class="h1 mega-title mega-title--large" style="font-family: GothamBold">We're an online
+                        bookstore making it annoyingly simple to buy books in Ghana</h2>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--Our Favorite Genres -->
+    <div class="buyreadlove-section index-section">
+        <div class="page-width">
+            <div class="section-header text-center"><h2>OUR FAVORITE GENRES</h2></div>
+            <div class="collection-grid">
+                <div class="grid grid--uniform">
+                    {% with categories as genres %}
+                        {% for genre in genres|slice:"8" %}
+                            <div class="grid__item small--one-half medium-up--one-quarter">
+
+                                <div class="collection-grid-item">
+                                    <a href="{% url 'shop:genre' slug=genre.slug %}" class="collection-grid-item__link">
+                                        <div class="collection-grid-item__overlay"
+                                                {% if genre.thumbnail %}
+
+                                             style="background-image: url({{ genre.thumbnail.url }});"
+                                                {% else %}
+                                             style="background-image: none;"
+                                                {% endif %}
+                                        ></div>
+                                        <div class="collection-grid-item__title-wrapper">
+                                            <h3 class="collection-grid-item__title">{{ genre.name }}</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- RECENTLY ADDED -->
+    <div class="buyreadlove-section index-section">
+        <style>
+
+            .grid__item--1492362075715 .grid-view-item__image {
+                max-height: 345px;
+            }
+
+        </style>
+
+        <div class="page-width">
+            <div class="section-header text-center"><h2>RECENTLY ADDED</h2></div>
+
+            <div class="grid grid--uniform grid--view-items">
+                {% for book in recently_added %}
+                    {% include 'partials/book-grid.html' %}
+                {% endfor %}
+            </div>
+
+            <br>
+            <div class="text-center">
+                <a href="{% url 'shop:recently_added' %}" class="btn">
+                    View all
+                </a>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <!-- See Our Editors' Pick -->
+    <div class="buyreadlove-section index-section index-section--flush">
+        <div class="hero hero--medium hero__overlay"
+             style="background-image: url('{% static 'shop/img/our_editor_s_picks_2_tFVva_2048x.jpg' %}'); background-position: center top;">
+
+            <div class="hero__inner">
+                <div class="page-width text-center">
+
+                    <h2 class="h1 mega-title mega-title--large">SEE OUR EDITOR&#39;S PICKS</h2>
+
+
+                    <div class="rte-setting mega-subtitle mega-subtitle--large"><p>For your sake, we pressured our
+                        editor into selecting his favorite titles and a few recommendations for your
+                        consideration</p></div>
+
+
+                    <a href="{% url 'collections:collection' 'editors-pick' %}" class="btn hero__btn">
+                        View
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Ghanaian -->
+    <div class="buyreadlove-section index-section">
+        <style>
+
+            .grid__item--1492362075715 .grid-view-item__image {
+                max-height: 345px;
+            }
+
+        </style>
+
+        <div class="page-width">
+            <div class="section-header text-center"><h2>Ghana. Ghanaian. Ghana-ish. We Love Everything Ghanaian!</h2>
+            </div>
+
+            <div class="grid grid--uniform grid--view-items">
+                {% for book in ghana %}
+                    {% include 'partials/book-grid.html' %}
+                {% endfor %}
+            </div>
+
+            <br>
+            <div class="text-center">
+                <a href="{% url 'collections:collection' slug='ghana' %}" class="btn">
+                    View all
+                </a>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <!-- Subscribe to Newsletter -->
+    <div class="buyreadlove-section index-section index-section--flush w3-margin-top">
+        <div class="page-width text-center index-section--newsletter index-section--newsletter-background">
+            <div class="section-header text-center">
+
+                <label for="Email" class="h2">SUBSCRIBE TO OUR NEWSLETTER</label>
+
+
+                <p>Be the first to hear the latest on discounts and new arrivals. Confession: we&#39;re subscribers
+                    ourselves!</p>
+
+            </div>
+            <form method="post" action="{% url 'shop:subscribe' %}" id="contact_form" class="contact-form"
+                  accept-charset="UTF-8">
+                {% csrf_token %}
+
+
+                <div class="input-group password__input-group">
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <input type="email"
+                           name="email"
+                           id="Email"
+                           class="input-group__field newsletter__input"
+                           value=""
+                           placeholder="Email address"
+                           autocorrect="off"
+                           autocapitalize="off">
+                    <span class="input-group__btn">
+          <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+            <span class="newsletter__submit-text--large">Subscribe</span>
+          </button>
+        </span>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+    <!-- Should-Have -->
+    <div class="buyreadlove-section index-section">
+        <style>
+
+            .grid__item--1492362075715 .grid-view-item__image {
+                max-height: 345px;
+            }
+
+        </style>
+
+        <div class="page-width">
+            <div class="section-header text-center"><h2>Books You Know You Should Have Read By Now</h2>
+            </div>
+
+            <div class="grid grid--uniform grid--view-items">
+                {% for book in should %}
+                    {% include 'partials/book-grid.html' %}
+                {% endfor %}
+            </div>
+
+            <br>
+            <div class="text-center">
+                <a href="{% url 'collections:collection' slug='should' %}" class="btn">
+                    View all
+                </a>
+            </div>
+
+
+        </div>
+
+
+    </div>
+{% endblock %}

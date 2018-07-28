@@ -13,7 +13,6 @@ import os
 
 import dj_database_url
 import django_heroku
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from decouple import config
 
@@ -46,7 +45,11 @@ INSTALLED_APPS = [
     # My Apps
     'accounts',
     'frontend',
-    'merch',
+    'shop',
+    'cart',
+    'payment',
+    'collection',
+    'orders',
 
     # Third party libraries
     'allauth',
