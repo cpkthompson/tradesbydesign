@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    categories = Category.objects.all(active=True)
+    categories = Category.objects.filter(active=True)
     context = {
         'categories': categories
     }
