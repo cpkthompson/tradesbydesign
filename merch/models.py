@@ -8,6 +8,7 @@ from django.template.defaultfilters import slugify
 
 class MerchType(models.Model):
     name = models.CharField(max_length=200, db_index=True)
+    is_active = models.BooleanField(default=True)
 
 
 class Merch(models.Model):
