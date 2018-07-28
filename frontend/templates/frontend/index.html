@@ -43,9 +43,7 @@
                                  height="{{ im.height }}">
                         {% endthumbnail %}
                     </a>
-                    <h1 class="subtitle w3-padding menu-label w3-large"
-                        style="margin: auto">{{ merch|truncatewords:1 }}</h1>
-                    <h1 class="subtitle w3-padding" style="margin: auto">
+                    <h1 class="subtitle w3-padding menu-label" style="margin: auto">
                         <strong>GHC {{ merch.price }}</strong></h1>
                     <a class="button is-text" href="{% url 'view_profile' merch.owner %}">{{ merch.owner }}</a>
                     <form action="{% url "cart:cart_add" merch.id %}" method="post">
