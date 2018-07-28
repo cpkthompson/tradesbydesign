@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from accounts.views import profile
 
 urlpatterns = [
-    url(_(r'^admin/'), admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     url(_(r'^accounts/'), include('allauth.urls')),
     url(_(r'^accounts/profile/$'), profile, name='profile'),
     url(_(r'^merch/'), include('merch.urls', namespace='merch')),
